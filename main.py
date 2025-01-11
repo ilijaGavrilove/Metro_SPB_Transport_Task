@@ -1,6 +1,9 @@
 import heapq
 import json
 import sys
+from colorama import init, Fore
+
+init()
 
 with open("spb.json", "r", encoding="utf-8") as f:
     stations = json.load(f)
@@ -48,15 +51,16 @@ def no_transfers(start_station, finish_station):
             num_line = lines[i]
             match num_line:
                 case 1:
-                    print("\033[31m{}".format(i))
+                    print(Fore.RED + i)
                 case 2:
-                    print("\033[34m{}".format(i))
+                    print(Fore.BLUE + i)
                 case 3:
-                    print("\033[32m{}".format(i))
+                    print(Fore.GREEN + i)
                 case 4:
-                    print("\033[214m{}".format(i))
+                    print(Fore.YELLOW + i)
                 case 5:
-                    print("\033[91m{}".format(i))
+                    print(Fore.MAGENTA + i)
+        print(Fore.RESET)
 
         print(f"\u001b[0m\nВремя пути (мин):\n {time} мин")
 
@@ -72,15 +76,16 @@ def no_transfers(start_station, finish_station):
             num_line = lines[i]
             match num_line:
                 case 1:
-                    print("\033[31m{}".format(i))
+                    print(Fore.RED + i)
                 case 2:
-                    print("\033[34m{}".format(i))
+                    print(Fore.BLUE + i)
                 case 3:
-                    print("\033[32m{}".format(i))
+                    print(Fore.GREEN + i)
                 case 4:
-                    print("\033[214m{}".format(i))
+                    print(Fore.YELLOW + i)
                 case 5:
-                    print("\033[91m{}".format(i))
+                    print(Fore.MAGENTA + i)
+            print(Fore.RESET)
 
         print(f"\u001b[0m\nВремя пути (мин):\n {time} мин")
 
@@ -130,15 +135,16 @@ def with_transfers(graph, start, end):
         num_line = lines[i]
         match num_line:
             case 1:
-                print("\033[31m{}".format(i))
+                print(Fore.RED + i)
             case 2:
-                print("\033[34m{}".format(i))
+                print(Fore.BLUE + i)
             case 3:
-                print("\033[32m{}".format(i))
+                print(Fore.GREEN + i)
             case 4:
-                print("\033[214m{}".format(i))
+                print(Fore.YELLOW + i)
             case 5:
-                print("\033[91m{}".format(i))
+                print(Fore.MAGENTA + i)
+        print(Fore.RESET)
 
     if lines[path[-1]] != lines[path[-2]]:
         distances[end] -= avg_interval
