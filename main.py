@@ -62,7 +62,12 @@ def no_transfers(start_station, finish_station):
                     print(Fore.MAGENTA + i)
         print(Fore.RESET)
 
-        print(f"\u001b[0m\nВремя пути (мин):\n {time} мин")
+        if time >= 60:
+            output_time = f"{time // 60} ч {(time + avg_interval) % 60} мин"
+        else:
+            output_time = f"{time} мин"
+
+        print(f"\u001b[0m\nВремя пути:\n{output_time}")
 
     else:  # едем с юга на север
         while current_station != finish_station:
@@ -87,7 +92,12 @@ def no_transfers(start_station, finish_station):
                     print(Fore.MAGENTA + i)
             print(Fore.RESET)
 
-        print(f"\u001b[0m\nВремя пути (мин):\n {time} мин")
+        if time >= 60:
+            output_time = f"{time // 60} ч {(time + avg_interval) % 60} мин"
+        else:
+            output_time = f"{time} мин"
+
+        print(f"\u001b[0m\nВремя пути:\n{output_time}")
 
 
 def with_transfers(graph, start, end):
@@ -149,7 +159,12 @@ def with_transfers(graph, start, end):
     if lines[path[-1]] != lines[path[-2]]:
         distances[end] -= avg_interval
 
-    print(f"\u001b[0m\nВремя пути:\n{str(distances[end] + avg_interval)} мин")
+    if (distances[end] + avg_interval) >= 60:
+        output_time = f"{(distances[end] + avg_interval) // 60} ч {(distances[end] + avg_interval) % 60} мин"
+    else:
+        output_time = f"{distances[end] + avg_interval} мин"
+
+    print(f"\u001b[0m\nВремя пути:\n{output_time}")
 
 
 def repeat_program_dialog():
